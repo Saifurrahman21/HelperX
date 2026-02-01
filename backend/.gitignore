@@ -1,0 +1,10 @@
+# Node modules folder ignore
+node_modules/
+
+# Environment file ignore
+.env
+
+# Agar multiple env files ho
+.env.local
+.env.development
+.env.production
