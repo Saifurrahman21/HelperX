@@ -37,7 +37,7 @@ export const signUp = async (requestAnimationFrame, res) => {
   }
 };
 
-export const login = async (requestAnimationFrame, res) => {
+export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
