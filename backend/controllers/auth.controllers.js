@@ -2,17 +2,17 @@ import genToken from "../configs/token.js";
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 
-export const signUp = async (requestAnimationFrame, res) => {
+export const signUp = async (req, res) => {
   try {
     const { name, email, password } = req.body;
     const existEmail = await User.findOne({ email });
     if (existEmail) {
       return res.status(400).json({ message: "email already exists!" });
     }
-    if (password.length < 6) {
+    if (password.length < 5) {
       return res
         .status(400)
-        .json({ message: "password must be atleast 6 charecter!  " });
+        .json({ message: "password must be atleast 5 charecter!  " });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -67,7 +67,7 @@ export const login = async (req, res) => {
 
 export const logOut = async (req, res) => {
   try {
-    res.clesrCookie("token");
+    res.clearCookie("token");
     return res.status(200).json({ message: "log out successfully" });
   } catch (error) {
     return res.status(500).json({ message: `log out error ${error}` });
