@@ -4,12 +4,12 @@ import { IoEye } from "react-icons/io5";
 import { useState } from "react";
 import { IoEyeOff } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-import { userDataContext } from "../context/UserContext";
+import { UserDataContext } from "../context/UserContext";
 import axios from "axios";
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
-  const { serverUrl } = useContext(userDataContext);
+  const { serverUrl } = useContext(UserDataContext);
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
